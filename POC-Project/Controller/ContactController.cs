@@ -18,7 +18,7 @@ namespace POC_Project.Controller
     {
         private readonly IContactRepository _contactService;
         private readonly IMapper _mapper;
-        public ContactController(IContactRepository contactService , IMapper mapper)
+        public ContactController(IContactRepository contactService, IMapper mapper)
         {
             _contactService = contactService ??
                 throw new ArgumentNullException(nameof(contactService));
@@ -37,15 +37,24 @@ namespace POC_Project.Controller
         }
         [HttpPost]
         [Route("AddContact")]
-        public async Task<IActionResult> Post(ContactDto contactInfo)
+        public async Task<IActionResult> Post(ContactInfo contactInfo)
         {
-            var contactInfo1 =  _mapper.Map<ContactInfo>(contactInfo);
-            var result = await _contactService.InsertContact(contactInfo1);
-            if (result.Id == 0)
+            try
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Something Went Wrong");
+              //  var contactInfo1 = _mapper.Map<ContactInfo>(contactInfo);
+                var result = await _contactService.InsertContact(contactInfo);
+                if (result.Id == 0)
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Something Went Wrong");
+                }
+
+                return Ok("Added Successfully");
             }
-            return Ok("Added Successfully");
+            catch(Exception ex) {
+
+                return null;
+
+            }
         }
         [HttpPut]
         [Route("UpdateContact")]
@@ -55,14 +64,14 @@ namespace POC_Project.Controller
             return Ok("Updated Successfully");
         }
         [HttpDelete]
-        [Route("DeleteContact")]
-        [HttpDelete("{id}")]
+        [Route("DeleteContact/{id}")]
+        //[HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
             var result = _contactService.DeleteContact(id);
             return new JsonResult("Deleted Successfully");
         }
 
-        
+
     }
 }

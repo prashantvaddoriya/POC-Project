@@ -1,5 +1,5 @@
 export interface Mycontact {
-    id:string;
+    id:number;
     contactName:string;
     email:string;
     image:string;

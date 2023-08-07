@@ -31,7 +31,7 @@ export class UpdatecontactComponent implements OnInit {
     });
 
     if (this.contactid) {
-      this.contservice.getsinglecontact(this.contactid).subscribe(
+      this.contservice.getsinglecontact(Number(this.contactid)).subscribe(
         (data: any) => {
           this.loading = true;
           this.contact = data;
@@ -50,7 +50,7 @@ export class UpdatecontactComponent implements OnInit {
 
   updatecontact() {
     if (this.contactid) {
-      this.store.dispatch(new updatecontact(this.contactid, this.contact));
+      this.store.dispatch(new updatecontact(Number(this.contactid), this.contact));
       setTimeout(() => {
         this.router.navigate(['contacts/admin']);
       }, 500);

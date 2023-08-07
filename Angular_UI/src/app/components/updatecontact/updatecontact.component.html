@@ -90,24 +90,21 @@
           <input
             type="text"
             class="form-control"
-            placeholder="Title"
+            placeholder="Hobby"
             [value]="contact.hobby"
-            name="title"
+            name="Hobby"
             [(ngModel)]="contact.hobby"
           />
         </div>
         <div class="mb-2">
-          <select
-            class="form-control mb-2"
-            [(ngModel)]="contact.address"
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Adress"
             [value]="contact.address"
-            name="groupid"
-          >
-            <option value="">select a group</option>
-            <option [value]="group.id" *ngFor="let group of groups">
-              {{ group.name }}
-            </option>
-          </select>
+            name="Address"
+            [(ngModel)]="contact.address"
+          />
         </div>
 
         <div class="mb-2">

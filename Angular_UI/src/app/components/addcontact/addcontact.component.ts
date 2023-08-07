@@ -32,6 +32,7 @@ export class AddcontactComponent implements OnInit {
   }
 
   addcontact() {
+    this.contact.id = 0;
     this.store.dispatch(new addcontact(this.contact));
 
     this.route.navigate(['']);

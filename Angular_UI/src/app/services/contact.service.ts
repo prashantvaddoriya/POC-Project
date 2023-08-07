@@ -16,7 +16,7 @@ export class ContactService {
     return this.http.get<Mycontact>(dataurl).pipe(catchError(this.handleError));
   }
 
-  getsinglecontact(contactid: string): Observable<Mycontact> {
+  getsinglecontact(contactid: number): Observable<Mycontact> {
     let dataurl = `${this.baseurl}/GetContactByID/${contactid}`;
     return this.http.get<Mycontact>(dataurl).pipe(catchError(this.handleError));
   }
@@ -28,14 +28,15 @@ export class ContactService {
       .pipe(catchError(this.handleError));
   }
 
-  updatecontact(contact: Mycontact, contactid: string): Observable<Mycontact> {
-    let dataurl = `${this.baseurl}/UpdateContact/${contactid}`;
+  updatecontact(contact: Mycontact, contactid: number): Observable<Mycontact> {
+    let dataurl = `${this.baseurl}/UpdateContact`;
+    contact.id = contactid;
     return this.http
       .put<Mycontact>(dataurl, contact)
       .pipe(catchError(this.handleError));
   }
 
-  deletecontact(contactid: string): Observable<Mycontact> {
+  deletecontact(contactid: number): Observable<Mycontact> {
     let dataurl = `${this.baseurl}/DeleteContact/${contactid}`;
     return this.http
       .delete<Mycontact>(dataurl)

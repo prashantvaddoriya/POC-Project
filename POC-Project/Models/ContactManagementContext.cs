@@ -58,7 +58,7 @@ namespace POC_Project.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Image).HasMaxLength(1);
+                entity.Property(e => e.Image).IsUnicode(false);
 
                 entity.Property(e => e.Mobile)
                     .HasMaxLength(50)

@@ -46,7 +46,7 @@ export class ContactmanagerComponent implements OnInit {
     });
   }
 
-  deletecontact(contectid: string) {
+  deletecontact(contectid: number) {
     if (contectid) {
       this.store.dispatch(new deletecontact(contectid));
 

@@ -5,7 +5,7 @@ export class getcontact {
 
 export class getsingalcontact {
   static readonly type = '[employee] set';
-  constructor(public contactid: string) {}
+  constructor(public contactid: number) {}
 }
 
 export class addcontact {
@@ -15,10 +15,10 @@ export class addcontact {
 
 export class updatecontact {
   static readonly type = '[contact] update';
-  constructor(public contactid: string, public payload: Mycontact) {}
+  constructor(public contactid: number, public payload: Mycontact) {}
 }
 
 export class deletecontact {
   static readonly type = '[contact] delete';
-  constructor(public contactid: string) {}
+  constructor(public contactid: number) {}
 }

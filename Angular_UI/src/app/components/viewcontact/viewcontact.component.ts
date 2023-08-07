@@ -14,7 +14,7 @@ import { contactstate } from 'src/app/store/state/contact.state';
   styleUrls: ['./viewcontact.component.css'],
 })
 export class ViewcontactComponent implements OnInit {
-  contactid: string = '';
+  contactid: number = 0;
   contact = {} as Mycontact;
   loading: boolean = false;
   errormassage: string | null = null;
@@ -31,7 +31,7 @@ export class ViewcontactComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((param) => {
-      this.contactid = String(param.get('contactid'));
+      this.contactid = Number(param.get('contactid'));
     });
 
     this.getsingalcontact();
@@ -43,7 +43,7 @@ export class ViewcontactComponent implements OnInit {
   }
 
   getsingalcontact() {
-    this.store.dispatch(new getsingalcontact(String(this.contactid)));
+    this.store.dispatch(new getsingalcontact(this.contactid));
 
     this.singalcontact$?.subscribe((res) => {
       this.contact = res;

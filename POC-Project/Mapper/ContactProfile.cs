@@ -7,7 +7,7 @@ namespace POC_Project.Mapper
     {
         public ContactProfile()
         {
-            CreateMap<ContactInfo, ContactDto>();
+            CreateMap<ContactDto,ContactInfo >().ForMember(x => x.Id, opt => opt.Ignore()); ;
         }
     }
 }
