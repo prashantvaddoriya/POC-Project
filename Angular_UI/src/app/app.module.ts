@@ -12,7 +12,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SpinnerComponent } from './spinner/spinner.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchPipe } from './pipe/search.pipe';
 
 // ngxs
@@ -39,6 +39,7 @@ import { contactstate } from './store/state/contact.state';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     //ngxs
     NgxsModule.forRoot([contactstate]),
     NgxsLoggerPluginModule.forRoot(),
