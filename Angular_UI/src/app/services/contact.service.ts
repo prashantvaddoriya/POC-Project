@@ -8,8 +8,8 @@ import { Mycontact } from '../mycontact';
 })
 export class ContactService {
   constructor(private http: HttpClient) {}
-  private baseurl: string = `https://poc-dotnet.azurewebsites.net/api/Contact`;
-
+  private baseurl: string = `https://localhost:44309/api/Contact`;
+//https://poc-dotnet.azurewebsites.net/api/Contact
   getallcontacts(): Observable<Mycontact> {
     let dataurl: string = `${this.baseurl}/GetContacts`;
     return this.http.get<Mycontact>(dataurl).pipe(catchError(this.handleError));

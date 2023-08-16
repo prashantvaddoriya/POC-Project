@@ -72,10 +72,11 @@ namespace POC_Project
 
             app.UseCors(builder =>
             {
-                builder
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader();
+                builder.WithOrigins("http://localhost:4200", "https://poc-dotnet.azurewebsites.net").AllowAnyMethod().AllowAnyHeader();
+                //builder
+                //.AllowAnyOrigin()
+                //.AllowAnyMethod()
+                //.AllowAnyHeader();
             });
 
             app.UseRouting();

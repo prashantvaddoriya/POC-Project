@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Store } from '@ngxs/store';
 import { Mycontact } from 'src/app/mycontact';
 import { ContactService } from 'src/app/services/contact.service';
 
@@ -19,7 +18,6 @@ export class AddcontactComponent implements OnInit {
   constructor(
     private contservice: ContactService,
     private route: Router,
-    private store: Store,
     private cForm: FormBuilder
   ) {
     this.contactForm = this.cForm.group({
