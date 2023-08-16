@@ -1,0 +1,93 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col">
+      <p class="h3">
+        <a class="btn btn-sm btn-success" routerLink="/contacts/add"
+          ><i class="fa-solid fa-circle-plus">&nbsp;</i>Create New Contact</a>
+      </p>
+      <!-- <p class="fst-italic">
+        This is Contact Management Application which is storing data of contact.
+      </p> -->
+      <div class="row"></div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search Contact"
+              [(ngModel)]="searchcontact"
+            />
+          </div>
+
+        </div>
+
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!loading && errormassage">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p class="h4 fw-bold text-danger">{{ errormassage }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="loading">
+  <app-spinner></app-spinner>
+</div>
+
+<!-- card -->
+<div class="container mt-4" *ngIf="!loading && contacts.length > 0">
+  <div class="row">
+    <div
+      class="col-sm-6 mb-2"
+      *ngFor="let contact of contacts | search : searchcontact"
+    >
+      <div class="card list-group-item-success">
+        <div class="card-body">
+          <div class="row align-item-center">
+            <div class="col-md-4 ">
+              <img src="{{ contact.image }}" class="contact-img" alt="" />
+            </div>
+            <div class="col-sm-7">
+              <div class="list-group">
+                <div class="list-group-item">
+                  Name : <span class="fw-bold">{{ contact.contactName }}</span>
+                </div>
+                <div class="list-group-item">
+                  Email :
+                  <span class="fw-bold">{{ contact.email }}</span>
+                </div>
+                <div class="list-group-item">
+                  Mo : <span class="fw-bold">{{ contact.mobile }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-1 d-flex flex-column align-items-center">
+              <a
+                class="btn btn-warning"
+                routerLink="/contacts/view/{{ contact.id }}"
+                ><i class="fa-solid fa-eye my-1"></i
+              ></a>
+              <a
+                class="btn btn-success my-1"
+                routerLink="/contacts/update/{{ contact.id }}"
+                ><i class="fa-solid fa-pen"></i
+              ></a>
+              <button
+                class="btn btn-danger my-1"
+                (click)="deletecontact(contact.id)"
+              >
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

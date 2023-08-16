@@ -1,0 +1,165 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col">
+      <p class="text-primary h2 fw-bold">
+        <i class="fa-solid fa-circle-plus">&nbsp;</i>Add contact
+      </p>
+      <p class="fst-italic">
+        This is dummy content : Lorem ipsum dolor sit amet, consectetur
+        adipisicing elit. Quasi ea cupiditate iure, incidunt veniam quos esse
+        placeat obcaecati odio officia dolorem enim quas laborum cum natus
+        provident est in eius doloribus optio molestias accusamus? Lorem ipsum
+        dolor sit amet consectetur, adipisicing elit. Natus, laborum? Quis
+        repudiand.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!loading && errormassage">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p class="h4 fw-bold text-danger">{{ errormassage }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="loading">
+   <app-spinner></app-spinner>
+</div>
+
+
+<!-- add-contact form -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <form (submit)="addcontact()" [formGroup]="contactForm" novalidate>
+        <div class="mb-2">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Name"
+            [(ngModel)]="contact.contactName"
+            formControlName="contactName"
+            name="contactName"
+            required
+          />
+          <div *ngIf="contactForm.controls['contactName'].invalid && (contactForm.controls['contactName'].dirty || contactForm.controls['contactName'].touched)" class="alert alert-danger">
+            <!-- <div *ngIf="contactForm.controls['contactName'].errors.required">
+            </div> -->
+            Name is required.
+        </div>
+        </div>
+        <div class="mb-2">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Photo url"
+            [(ngModel)]="contact.image"
+            formControlName="image"
+            name="photo"
+            required
+          />
+          <div *ngIf="contactForm.controls['image'].invalid && (contactForm.controls['image'].dirty || contactForm.controls['image'].touched)" class="alert alert-danger">
+            <!-- <div *ngIf="contactForm.controls['contactName'].errors.required">
+            </div> -->
+            image is required.
+        </div>
+        </div>
+        <div class="mb-2">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Email Id"
+            [(ngModel)]="contact.email"
+            formControlName="email"
+            name="photo"
+            required
+          />
+          <div *ngIf="contactForm.controls['email'].invalid && (contactForm.controls['email'].dirty || contactForm.controls['email'].touched)" class="alert alert-danger">
+            <!-- <div *ngIf="contactForm.controls['contactName'].errors.required">
+            </div> -->
+            email is required.
+        </div>
+        </div>
+        <div class="mb-2">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Mobile no"
+            [(ngModel)]="contact.mobile"
+            formControlName="mobile"
+            name="photo"
+            required
+          />
+          <div *ngIf="contactForm.controls['mobile'].invalid && (contactForm.controls['mobile'].dirty || contactForm.controls['mobile'].touched)" class="alert alert-danger">
+            <!-- <div *ngIf="contactForm.controls['contactName'].errors.required">
+            </div> -->
+            mobile is required.
+        </div>
+        </div>
+        <div class="mb-2">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Company"
+            [(ngModel)]="contact.company"
+            formControlName="company"
+            name="photo"
+            required
+          />
+          <div *ngIf="contactForm.controls['company'].invalid && (contactForm.controls['company'].dirty || contactForm.controls['company'].touched)" class="alert alert-danger">
+            <!-- <div *ngIf="contactForm.controls['contactName'].errors.required">
+            </div> -->
+            company is required.
+        </div>
+        </div>
+        <div class="mb-2">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Hobby"
+            [(ngModel)]="contact.hobby"
+            formControlName="hobby"
+            name="photo"
+          />
+          <div *ngIf="contactForm.controls['hobby'].invalid && (contactForm.controls['hobby'].dirty || contactForm.controls['hobby'].touched)" class="alert alert-danger">
+            <!-- <div *ngIf="contactForm.controls['contactName'].errors.required">
+            </div> -->
+            hobby is required.
+        </div>
+        </div>
+        <div class="mb-2">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Address"
+            [(ngModel)]="contact.address"
+            formControlName="address"
+            name="address"
+          />
+          <div *ngIf="contactForm.controls['address'].invalid && (contactForm.controls['address'].dirty || contactForm.controls['address'].touched)" class="alert alert-danger">
+            <!-- <div *ngIf="contactForm.controls['contactName'].errors.required">
+            </div> -->
+            hobby is required.
+        </div>
+        </div>
+
+        <div class="mb-2">
+          <input type="submit" [disabled]="contactForm.invalid"  class="btn btn-success" value="create" />
+          <a routerLink="/" class="btn btn-warning mx-2">close</a>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-4">
+      <img
+        class="contact-img"
+        [src]="contact.image"
+        alt=""
+      />
+    </div>
+  </div>
+</div>

@@ -14,8 +14,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchPipe } from './pipe/search.pipe';
+
+// ngxs
+import { NgxsModule } from '@ngxs/store';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { contactstate } from './store/state/contact.state';
 
 @NgModule({
   declarations: [
@@ -36,6 +40,8 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    //ngxs
+    NgxsModule.forRoot([contactstate]),
     NgxsLoggerPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),
   ],

@@ -1,0 +1,120 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col">
+      <p class="text-primary h2 fw-bold">
+        <i class="fa-solid fa-pen">&nbsp;</i>Edit contact
+      </p>
+      <p class="fst-italic">
+        This is dummy content : Lorem ipsum dolor sit amet, consectetur
+        adipisicing elit. Quasi ea cupiditate iure, incidunt veniam quos esse
+        placeat obcaecati odio officia dolorem enim quas laborum cum natus
+        provident est in eius doloribus optio molestias accusamus? Lorem ipsum
+        dolor sit amet consectetur, adipisicing elit. Natus, laborum? Quis
+        repudiand.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- add-contact form -->
+
+<div *ngIf="!loading && errormassage">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p class="h4 fw-bold text-danger">{{ errormassage }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="loading">
+  <app-spinner></app-spinner>
+</div>
+
+<div class="container" ng>
+  <div class="row">
+    <div class="col-sm-4">
+      <form (submit)="updatecontact()">
+        <div class="mb-2">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Name"
+            [value]="contact.contactName"
+            name="name"
+            [(ngModel)]="contact.contactName"
+          />
+        </div>
+        <div class="mb-2">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Photo url"
+            [value]="contact.image"
+            name="photo"
+            [(ngModel)]="contact.image"
+          />
+        </div>
+        <div class="mb-2">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Email Id"
+            [value]="contact.email"
+            name="email"
+            [(ngModel)]="contact.email"
+          />
+        </div>
+        <div class="mb-2">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Mobile no"
+            [value]="contact.mobile"
+            name="mobile"
+            [(ngModel)]="contact.mobile"
+          />
+        </div>
+        <div class="mb-2">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Company"
+            [value]="contact.company"
+            name="company"
+            [(ngModel)]="contact.company"
+          />
+        </div>
+        <div class="mb-2">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Hobby"
+            [value]="contact.hobby"
+            name="Hobby"
+            [(ngModel)]="contact.hobby"
+          />
+        </div>
+        <div class="mb-2">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Adress"
+            [value]="contact.address"
+            name="Address"
+            [(ngModel)]="contact.address"
+          />
+        </div>
+
+        <div class="mb-2">
+          <input type="submit" class="btn btn-success" value="update" />
+          <a routerLink="/" class="btn btn-warning mx-2">close</a>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-4">
+      <img class="contact-img" [src]="contact.image" alt="" />
+    </div>
+  </div>
+</div>

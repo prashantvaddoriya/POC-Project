@@ -3,7 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { Mycontact } from 'src/app/mycontact';
+import { Mygroup } from 'src/app/mygroup';
 import { ContactService } from 'src/app/services/contact.service';
+import { addcontact } from 'src/app/store/actions/contact.action';
 
 @Component({
   selector: 'app-addcontact',
@@ -15,6 +17,7 @@ export class AddcontactComponent implements OnInit {
   errormassage: string | null = null;
   contactForm: FormGroup;
   contact: Mycontact = {} as Mycontact;
+  groups: Mygroup[] = [];
   isEnable : boolean = false;
   constructor(
     private contservice: ContactService,
@@ -34,12 +37,18 @@ export class AddcontactComponent implements OnInit {
    this.isEnable = this.contactForm.status != 'INVALID'
   }
   ngOnInit(): void {
+    // this.contservice.getallgroups().subscribe(
+    //   (data: any) => {
+    //     this.groups = data;
+    //   },
+    //   (error) => (this.errormassage = error)
+    // );
   }
 
   addcontact() {
     this.contact.id = 0;
-    this.contservice.createcontact(this.contact).subscribe((res) => {
-      this.route.navigate(['contacts/admin']);
-    });
+    this.store.dispatch(new addcontact(this.contact));
+
+    this.route.navigate(['']);
   }
 }

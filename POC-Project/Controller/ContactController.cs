@@ -48,7 +48,7 @@ namespace POC_Project.Controller
                     return StatusCode(StatusCodes.Status500InternalServerError, "Something Went Wrong");
                 }
 
-                return Ok("Added Successfully");
+                return new JsonResult("Added Successfully");
             }
             catch(Exception ex) {
 
@@ -61,12 +61,12 @@ namespace POC_Project.Controller
         public async Task<IActionResult> Put(ContactInfo contactInfo)
         {
             await _contactService.UpdateContact(contactInfo);
-            return Ok("Updated Successfully");
+            return new JsonResult("Updated Successfully");
         }
         [HttpDelete]
         [Route("DeleteContact/{id}")]
         //[HttpDelete("{id}")]
-        public JsonResult Delete(int id)
+        public JsonResult Delete(int id)    
         {
             var result = _contactService.DeleteContact(id);
             return new JsonResult("Deleted Successfully");

@@ -2,13 +2,14 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Mycontact } from '../mycontact';
+import { Mygroup } from '../mygroup';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ContactService {
   constructor(private http: HttpClient) {}
-  private baseurl: string = `https://poc-dotnet.azurewebsites.net/api/Contact`;
+  private baseurl: string = `https://localhost:44309/api/Contact`;
 
   getallcontacts(): Observable<Mycontact> {
     let dataurl: string = `${this.baseurl}/GetContacts`;
@@ -41,6 +42,16 @@ export class ContactService {
       .delete<Mycontact>(dataurl)
       .pipe(catchError(this.handleError));
   }
+
+  // getallgroups(): Observable<Mygroup> {
+  //   let dataurl = `${this.baseurl}/groups`;
+  //   return this.http.get<Mygroup>(dataurl).pipe(catchError(this.handleError));
+  // }
+
+  // getgroup(contact: Mycontact): Observable<Mygroup> {
+  //   let dataurl = `${this.baseurl}/groups/${contact.groupid}`;
+  //   return this.http.get<Mygroup>(dataurl).pipe(catchError(this.handleError));
+  // }
 
   public handleError(error: HttpErrorResponse) {
     let errormassage: string = '';

@@ -1,8 +1,11 @@
-
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngxs/store';
 import { Mycontact } from 'src/app/mycontact';
+import { Mygroup } from 'src/app/mygroup';
 import { ContactService } from 'src/app/services/contact.service';
+import { updatecontact } from 'src/app/store/actions/contact.action';
 
 @Component({
   selector: 'app-updatecontact',
@@ -14,10 +17,12 @@ export class UpdatecontactComponent implements OnInit {
   errormassage: string | null = null;
   contact: Mycontact = {} as Mycontact;
   contactid: string | null = null;
+  groups: Mygroup[] = [];
   constructor(
     private contservice: ContactService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private store: Store
   ) {}
 
   ngOnInit(): void {
@@ -30,6 +35,9 @@ export class UpdatecontactComponent implements OnInit {
         (data: any) => {
           this.loading = true;
           this.contact = data;
+          // this.contservice.getallgroups().subscribe((data: any) => {
+          //   this.groups = data;
+          // });
           this.loading = false;
         },
         (error) => {
@@ -42,9 +50,10 @@ export class UpdatecontactComponent implements OnInit {
 
   updatecontact() {
     if (this.contactid) {
-      this.contservice.updatecontact(this.contact, Number(this.contactid)).subscribe((res)=>{
-          this.router.navigate(['contacts/admin']);
-      });
+      this.store.dispatch(new updatecontact(Number(this.contactid), this.contact));
+      setTimeout(() => {
+        this.router.navigate(['contacts/admin']);
+      }, 500);
     }
   }
 }

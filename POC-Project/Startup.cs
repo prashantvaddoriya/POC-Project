@@ -29,7 +29,9 @@ namespace POC_Project
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ContactManagementContext>(options => options.UseSqlServer("Data Source=PVADDORIYA01;Initial Catalog=ContactManagement;Integrated Security=True;TrustServerCertificate=True"));
+            //services.AddDbContext<ContactManagementContext>(options => options.UseSqlServer("Data Source=PVADDORIYA01;Initial Catalog=ContactManagement;Integrated Security=True;TrustServerCertificate=True"));
+            services.AddDbContext<ContactManagementContext>(options => options.UseSqlServer("Server=tcp:pocserver369.database.windows.net,1433;Initial Catalog=ContactManagement;Persist Security Info=False;User ID=admin_prashant;Password=Saint@369;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"));
+
             services.AddControllers();
             services.AddScoped<IContactRepository, ContactRepository>();
          //   services.AddScoped<I>
