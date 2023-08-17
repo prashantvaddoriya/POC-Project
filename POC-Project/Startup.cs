@@ -72,7 +72,7 @@ namespace POC_Project
 
             app.UseCors(builder =>
             {
-                builder.WithOrigins("http://localhost:4200", "https://poc-dotnet.azurewebsites.net").AllowAnyMethod().AllowAnyHeader();
+                builder.WithOrigins("http://localhost:4200", "https://poc-dotnet.azurewebsites.net", "https://lively-wave-00bc3ad10.3.azurestaticapps.net/").AllowAnyMethod().AllowAnyHeader();
                 //builder
                 //.AllowAnyOrigin()
                 //.AllowAnyMethod()

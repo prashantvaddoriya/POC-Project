@@ -15,10 +15,10 @@ namespace POC_Project.Services
             _contactRepository = contactRepository ??
                 throw new ArgumentNullException(nameof(contactRepository));
         }
-        public async Task<IEnumerable<ContactInfo>> GetContacts()
+        public async Task<IEnumerable<ContactInfo>> GetContacts(int pageSize, int pageNumber)
         {
 
-            return await _contactRepository.GetContacts();
+            return await _contactRepository.GetContacts(pageSize, pageNumber);
         }
         public async Task<ContactInfo> GetContactByID(int ID)
         {

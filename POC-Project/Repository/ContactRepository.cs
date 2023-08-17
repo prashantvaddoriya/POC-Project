@@ -15,10 +15,9 @@ namespace POC_Project.Repository
             _contactManagementContext = contactManagementDbContext ??
                 throw new ArgumentNullException(nameof(contactManagementDbContext));
         }
-        public async Task<IEnumerable<ContactInfo>> GetContacts()
+        public async Task<IEnumerable<ContactInfo>> GetContacts(int pageSize, int pageNumber)
         {
-
-            return await _contactManagementContext.ContactInfos.ToListAsync();
+            return await _contactManagementContext.ContactInfos.Skip(pageSize * (pageNumber)).Take(pageSize).ToListAsync();
         }
         public async Task<ContactInfo> GetContactByID(int ID)
         {

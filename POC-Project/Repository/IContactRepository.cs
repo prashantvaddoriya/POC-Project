@@ -8,7 +8,7 @@ namespace POC_Project.Repository
 {
     public interface IContactRepository
     {
-        public Task<IEnumerable<ContactInfo>> GetContacts();
+        public Task<IEnumerable<ContactInfo>> GetContacts(int pageSize, int pageNumber);
         public Task<ContactInfo> GetContactByID(int ID);
         public Task<ContactInfo> InsertContact(ContactInfo contactInfo);
         public Task<ContactInfo> UpdateContact(ContactInfo contactInfo);

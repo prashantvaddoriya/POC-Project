@@ -25,9 +25,9 @@ namespace POC_Project.Controller
         }
         [HttpGet]
         [Route("GetContacts")]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get(int pageSize , int pageNumber)
         {
-            return Ok(await _contactService.GetContacts());
+            return Ok(await _contactService.GetContacts(pageSize,pageNumber));
         }
         [HttpGet]
         [Route("GetContactByID/{Id}")]

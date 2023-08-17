@@ -6,7 +6,7 @@ namespace POC_Project.Services
 {
     public interface IContactService
     {
-        public Task<IEnumerable<ContactInfo>> GetContacts();
+        public Task<IEnumerable<ContactInfo>> GetContacts(int pageSize , int pageNumber);
         public Task<ContactInfo> GetContactByID(int ID);
         public Task<ContactInfo> InsertContact(ContactInfo contactInfo);
         public Task<ContactInfo> UpdateContact(ContactInfo contactInfo);
